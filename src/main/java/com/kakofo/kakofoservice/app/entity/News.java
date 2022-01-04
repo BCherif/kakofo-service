@@ -17,10 +17,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class News extends BaseEntity {
     private String title;
-    private String type;
-
     @Lob
     private String content;
     private String path;
-    private Date date;
 }
