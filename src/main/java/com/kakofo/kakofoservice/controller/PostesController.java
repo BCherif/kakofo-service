@@ -1,5 +1,8 @@
 package com.kakofo.kakofoservice.controller;
 
+
+import com.kakofo.kakofoservice.app.entity.PoliceStation;
+import com.kakofo.kakofoservice.services.PostesService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,20 +11,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/postes")
 @AllArgsConstructor
 public class PostesController {
-    //private final AffectionCandidatPartiService affectionCandidatPartiService;
+    private final PostesService postesService;
 
-//    @GetMapping
-//    public ResponseEntity<?> getCandidatPartis() {
-//        return ResponseEntity.ok(affectionCandidatPartiService.getCandidatPartis());
-//    }
+    @GetMapping
+    public ResponseEntity<?> getAllPostes() {
+        return ResponseEntity.ok(postesService.findAll());
+    }
 
-//    @PostMapping
-//    public ResponseEntity<?> create(@RequestBody AffectionCandidatParti affectionCandidatParti) {
-//        return ResponseEntity.ok(affectionCandidatPartiService.create(affectionCandidatParti));
-//    }
-//
-//    @PutMapping("/{id}")
-//    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody AffectionCandidatParti affectionCandidatParti) {
-//        return ResponseEntity.ok(affectionCandidatPartiService.update(id, affectionCandidatParti));
-//    }
+    @PostMapping("/save")
+    public ResponseEntity<?> save(@RequestBody PoliceStation policeStation) {
+        return ResponseEntity.ok(postesService.save(policeStation));
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<?> update(@RequestBody PoliceStation policeStation) {
+        return ResponseEntity.ok(postesService.update(policeStation));
+    }
 }
