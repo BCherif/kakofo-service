@@ -1,8 +1,8 @@
-package com.kakofo.kakofoservice.controller;
+package com.kakofo.kakofoservice.app.controller;
 
 
 import com.kakofo.kakofoservice.app.entity.PoliceStation;
-import com.kakofo.kakofoservice.services.PostesService;
+import com.kakofo.kakofoservice.app.services.PostesService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

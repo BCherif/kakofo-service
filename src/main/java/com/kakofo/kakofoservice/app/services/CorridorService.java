@@ -1,9 +1,8 @@
-package com.kakofo.kakofoservice.services;
+package com.kakofo.kakofoservice.app.services;
 
 import com.kakofo.kakofoservice.app.entity.Corridor;
-import com.kakofo.kakofoservice.app.entity.PoliceStation;
-import com.kakofo.kakofoservice.repositories.CorridorRepository;
-import com.kakofo.kakofoservice.repositories.PostesRepository;
+import com.kakofo.kakofoservice.app.repositories.CorridorRepository;
+import com.kakofo.kakofoservice.app.repositories.PostesRepository;
 import com.kakofo.kakofoservice.utils.Response;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

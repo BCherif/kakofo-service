@@ -1,16 +1,10 @@
-package com.kakofo.kakofoservice.services;
+package com.kakofo.kakofoservice.app.services;
 
 import com.kakofo.kakofoservice.app.entity.LegalClinic;
-import com.kakofo.kakofoservice.app.entity.PoliceStation;
-import com.kakofo.kakofoservice.repositories.LegalClinicRepository;
-import com.kakofo.kakofoservice.repositories.PostesRepository;
+import com.kakofo.kakofoservice.app.repositories.LegalClinicRepository;
 import com.kakofo.kakofoservice.utils.Response;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor

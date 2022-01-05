@@ -1,10 +1,10 @@
-package com.kakofo.kakofoservice.controller;
+package com.kakofo.kakofoservice.app.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kakofo.kakofoservice.app.entity.News;
 import com.kakofo.kakofoservice.base.response.CResponse;
-import com.kakofo.kakofoservice.services.NewService;
+import com.kakofo.kakofoservice.app.services.NewService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

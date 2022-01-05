@@ -1,9 +1,9 @@
-package com.kakofo.kakofoservice.services;
+package com.kakofo.kakofoservice.app.services;
 
 
 import com.kakofo.kakofoservice.app.entity.News;
+import com.kakofo.kakofoservice.app.repositories.NewRepository;
 import com.kakofo.kakofoservice.base.response.CResponse;
-import com.kakofo.kakofoservice.repositories.NewRepository;
 import com.kakofo.kakofoservice.utils.Constants;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
