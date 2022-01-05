@@ -25,7 +25,7 @@ public class TrafficLawsService {
 
     public CResponse<TrafficLaws> saveTrafficLaws(TrafficLaws trafficLaws, MultipartFile photo) {
         try {
-            trafficLaws.setPath(uploadImageService.uploadImage(photo, Constants.NEWS_DOWNLOAD_LINK));
+            trafficLaws.setPath(uploadImageService.uploadImage(photo, Constants.TRAFFIC_LAW_DOWNLOAD_LINK));
             TrafficLaws trafficLawsSaved = trafficLawsRepository.save(trafficLaws);
             return CResponse.success(trafficLawsSaved, "Actualité enregistré");
         } catch (Exception e) {
