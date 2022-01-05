@@ -27,6 +27,13 @@ public class NewsController {
         News news = new ObjectMapper().readValue(newString, News.class);
         return newService.saveNews(news, photo);
     }
+
+    @PostMapping("/update")
+    public CResponse<News> updateNews(@RequestParam("news") String newString,
+                                    @RequestParam("photo") MultipartFile photo) throws JsonProcessingException {
+        News news = new ObjectMapper().readValue(newString, News.class);
+        return newService.update(news, photo);
+    }
     @PostMapping("/liste-pagination")
     public CResponse<Page<News>>getNewsByPage(@RequestParam("page") int page,
                                                    @RequestParam("size") int size) {

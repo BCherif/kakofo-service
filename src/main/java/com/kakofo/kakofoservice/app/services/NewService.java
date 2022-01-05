@@ -45,7 +45,7 @@ public class NewService {
       }
     }
 
-    public CResponse<News> simpleUpdate(News news, MultipartFile photo) {
+    public CResponse<News> update(News news, MultipartFile photo) {
         try {
             Optional<News> newsOptional = newRepository.findById(news.getId());
             if (photo == null) {
