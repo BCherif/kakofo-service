@@ -15,14 +15,14 @@ public interface CEntity extends Comparable<CEntity>, Serializable, Cloneable{
     LocalDateTime getCreatedAt();
 
     LocalDateTime getLastModifiedAt();
-
-    LocalDate getCreatedDate();
-
-    LocalTime getCreatedTime();
-
-    LocalDate getLastModifiedDate();
-
-    LocalTime getLastModifiedTime();
+//
+//    LocalDate getCreatedDate();
+//
+//    LocalTime getCreatedTime();
+//
+//    LocalDate getLastModifiedDate();
+//
+//    LocalTime getLastModifiedTime();
 
     void setId(Long id);
 

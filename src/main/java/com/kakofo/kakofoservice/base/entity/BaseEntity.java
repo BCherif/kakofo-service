@@ -20,38 +20,60 @@ public class BaseEntity implements CEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
-    @CreatedBy
-    @Column(name = "created_by")
-    protected String createdBy;
-
-    @CreatedBy
-    @Column(name = "last_modified_by")
-    protected String lastModifiedBy;
-
     @CreatedDate
     @Column(name = "created_at", columnDefinition = "DATETIME")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
     protected LocalDateTime createdAt = LocalDateTime.now();
 
+    @CreatedBy
+    @Column(name = "created_by")
+    protected String createdBy;
+
     @LastModifiedDate
-    @Column(name = "last_modified_at", columnDefinition = "DATETIME")
+    @Column(name = "modified_at", columnDefinition = "DATETIME")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
     protected LocalDateTime lastModifiedAt = LocalDateTime.now();
 
-    @CreatedDate
-    @Column(name = "created_date", columnDefinition = "DATE")
-    protected LocalDate createdDate = LocalDate.now();
 
-    @CreatedDate
-    @Column(name = "created_time", columnDefinition = "TIME")
-    protected LocalTime createdTime = LocalTime.now();
+    @CreatedBy
+    @Column(name = "modified_by")
+    protected String lastModifiedBy;
 
-    @LastModifiedDate
-    @Column(name = "last_modified_date", columnDefinition = "DATE")
-    protected LocalDate lastModifiedDate = LocalDate.now();
 
-    @LastModifiedDate
-    @Column(name = "last_modified_time", columnDefinition = "TIME")
-    protected LocalTime lastModifiedTime = LocalTime.now();
+    @Override
+    public void setCreatedDate(LocalDate createdDate) {
+
+    }
+
+    @Override
+    public void setCreatedTime(LocalTime createdTime) {
+
+    }
+
+    @Override
+    public void setLastModifiedDate(LocalDate lastModifiedDate) {
+
+    }
+
+    @Override
+    public void setLastModifiedTime(LocalTime lastModifiedTime) {
+
+    }
+
+//    @CreatedDate
+//    @Column(name = "created_date", columnDefinition = "DATE")
+//    protected LocalDate createdDate = LocalDate.now();
+//
+//    @CreatedDate
+//    @Column(name = "created_time", columnDefinition = "TIME")
+//    protected LocalTime createdTime = LocalTime.now();
+
+//    @LastModifiedDate
+//    @Column(name = "last_modified_date", columnDefinition = "DATE")
+//    protected LocalDate lastModifiedDate = LocalDate.now();
+//
+//    @LastModifiedDate
+//    @Column(name = "last_modified_time", columnDefinition = "TIME")
+//    protected LocalTime lastModifiedTime = LocalTime.now();
 
 }

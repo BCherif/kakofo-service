@@ -2,26 +2,32 @@ package com.kakofo.kakofoservice.app.entity;
 
 import com.kakofo.kakofoservice.base.entity.BaseEntity;
 import lombok.*;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "level")
+@Table(name = "locality")
 @Entity
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Level extends BaseEntity {
+public class Locality extends BaseEntity {
     private String name;
+    private Double latitude;
+    private Double longitude;
+
     @ManyToOne
-    @JoinColumn(name = "cuttingId")
-    private Cutting cutting;
+    @NotFound(action = NotFoundAction.IGNORE)
+    private Division division;
+
     @ManyToOne
-    @JoinColumn(name = "LevelSupId")
-    private Level LevelSup;
+    @NotFound(action = NotFoundAction.IGNORE)
+    private Locality localitySup;
+
 }
