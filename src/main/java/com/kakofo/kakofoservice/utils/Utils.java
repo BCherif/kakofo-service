@@ -1,5 +1,9 @@
 package com.kakofo.kakofoservice.utils;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -53,9 +57,14 @@ public class Utils {
         DateFormat dateFormat = new SimpleDateFormat("EEEE d MMMM yyyy", Locale.FRANCE);
         try {
             return dateFormat.format(date);
-        }catch (Exception e){
+        } catch (Exception e) {
             return "";
         }
+    }
+
+    public static Pageable getDefaultPageable(Pageable pageable) {
+        Sort defaultSort = Sort.by(Sort.Direction.DESC, "createdAt");
+        return PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), defaultSort);
     }
 
 
