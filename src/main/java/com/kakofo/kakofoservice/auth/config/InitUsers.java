@@ -32,7 +32,7 @@ public class InitUsers implements ApplicationRunner {
                 .lastName("Foundation")
                 .fullName("Tuwindi Foundation")
                 .phone("79369550")
-                .email("anba@tuwindi.org")
+                .email("kibaru@tuwindi.org")
                 .address("Banankabougou")
                 .active(true)
                 .admin(true)

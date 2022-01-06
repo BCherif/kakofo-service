@@ -1,7 +1,9 @@
 package com.kakofo.kakofoservice.app.services;
 
 import com.kakofo.kakofoservice.app.entity.PoliceStation;
+import com.kakofo.kakofoservice.app.entity.TypePoste;
 import com.kakofo.kakofoservice.app.repositories.PostesRepository;
+import com.kakofo.kakofoservice.app.repositories.TypePostesRepository;
 import com.kakofo.kakofoservice.utils.Response;
 
 import lombok.AllArgsConstructor;
@@ -15,6 +17,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class PostesService {
     private final PostesRepository postesRepository;
+    private final TypePostesRepository typePostesRepository;
 
 
     public Response save(PoliceStation policeStation){
@@ -31,6 +34,23 @@ public class PostesService {
             return Response.error("Une erreur est survenue!");
         }
         return Response.success("Poste enregistré avec succès ");
+
+    }
+
+    public Response saveTypePoste(TypePoste typePoste){
+        try {
+
+            TypePoste tps = typePostesRepository.findByName(typePoste.getName());
+            if (tps != null) {
+                return Response.error("Ce type de Poste existe déjà!");
+            }
+            typePostesRepository.save(typePoste);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.error("Une erreur est survenue!");
+        }
+        return Response.success("Type Poste enregistré avec succès ");
 
     }
 
@@ -60,6 +80,18 @@ public class PostesService {
             return Response.error("Une erreur est survenue!");
         }
         return Response.with(policeStations,policeStations.size() + "La liste des Postes ");
+
+    }
+    public Response findAllTypePoste(){
+        List<TypePoste> typePostes = new ArrayList<>();
+        try {
+            typePostes = typePostesRepository.findAll();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.error("Une erreur est survenue!");
+        }
+        return Response.with(typePostes,typePostes.size() + "La liste des type de postes ");
 
     }
 }

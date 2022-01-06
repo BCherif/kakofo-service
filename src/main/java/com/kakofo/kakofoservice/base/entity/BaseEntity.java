@@ -1,6 +1,14 @@
 package com.kakofo.kakofoservice.base.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -20,38 +28,61 @@ public class BaseEntity implements CEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
+    @CreatedDate
+    @Column(name = "created_at", columnDefinition = "DATETIME")
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    protected LocalDateTime createdAt = LocalDateTime.now();
+
     @CreatedBy
     @Column(name = "created_by")
     protected String createdBy;
 
-    @CreatedBy
-    @Column(name = "last_modified_by")
-    protected String lastModifiedBy;
-
-    @CreatedDate
-    @Column(name = "created_at", columnDefinition = "DATETIME")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
-    protected LocalDateTime createdAt = LocalDateTime.now();
-
     @LastModifiedDate
-    @Column(name = "last_modified_at", columnDefinition = "DATETIME")
+    @Column(name = "modified_at", columnDefinition = "DATETIME")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
     protected LocalDateTime lastModifiedAt = LocalDateTime.now();
 
-    @CreatedDate
-    @Column(name = "created_date", columnDefinition = "DATE")
-    protected LocalDate createdDate = LocalDate.now();
+    @CreatedBy
+    @Column(name = "modified_by")
+    protected String lastModifiedBy;
 
-    @CreatedDate
-    @Column(name = "created_time", columnDefinition = "TIME")
-    protected LocalTime createdTime = LocalTime.now();
 
-    @LastModifiedDate
-    @Column(name = "last_modified_date", columnDefinition = "DATE")
-    protected LocalDate lastModifiedDate = LocalDate.now();
+    @Override
+    public void setCreatedDate(LocalDate createdDate) {
 
-    @LastModifiedDate
-    @Column(name = "last_modified_time", columnDefinition = "TIME")
-    protected LocalTime lastModifiedTime = LocalTime.now();
+    }
+
+    @Override
+    public void setCreatedTime(LocalTime createdTime) {
+
+    }
+
+    @Override
+    public void setLastModifiedDate(LocalDate lastModifiedDate) {
+
+    }
+
+    @Override
+    public void setLastModifiedTime(LocalTime lastModifiedTime) {
+
+    }
+
+//    @CreatedDate
+//    @Column(name = "created_date", columnDefinition = "DATE")
+//    protected LocalDate createdDate = LocalDate.now();
+//
+//    @CreatedDate
+//    @Column(name = "created_time", columnDefinition = "TIME")
+//    protected LocalTime createdTime = LocalTime.now();
+
+//    @LastModifiedDate
+//    @Column(name = "last_modified_date", columnDefinition = "DATE")
+//    protected LocalDate lastModifiedDate = LocalDate.now();
+//
+//    @LastModifiedDate
+//    @Column(name = "last_modified_time", columnDefinition = "TIME")
+//    protected LocalTime lastModifiedTime = LocalTime.now();
 
 }

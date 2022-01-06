@@ -3,20 +3,22 @@ package com.kakofo.kakofoservice.app.controller;
 
 import com.kakofo.kakofoservice.app.entity.PoliceStation;
 import com.kakofo.kakofoservice.app.entity.TypePoste;
+import com.kakofo.kakofoservice.app.services.LocalityService;
 import com.kakofo.kakofoservice.app.services.PostesService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/postes")
+@RequestMapping("/localities")
 @AllArgsConstructor
-public class PostesController {
+public class LocalityController {
     private final PostesService postesService;
+    private final LocalityService localityService;
 
-    @GetMapping("/findAll")
-    public ResponseEntity<?> getAllPostes() {
-        return ResponseEntity.ok(postesService.findAll());
+    @GetMapping("/divisions")
+    public ResponseEntity<?> getAllDivision() {
+        return ResponseEntity.ok(localityService.getAllDivision());
     }
 
    @GetMapping("/findAll/type")
