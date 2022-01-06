@@ -49,9 +49,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Entry points
         http.authorizeRequests()//
-                .antMatchers(SecurityConstants.AUTH_LOGIN_URL).permitAll()//
-                .antMatchers(SecurityConstants.ACCESS_DENIED).permitAll()//
-                .antMatchers(SecurityConstants.FORGET_PWD_LOGOUT_URL).permitAll()//
+                .antMatchers(SecurityConstants.AUTH_LOGIN_URL,
+                        SecurityConstants.ACCESS_DENIED,
+                        SecurityConstants.FORGET_PWD_LOGOUT_URL,
+                        SecurityConstants.DOWNLOAD_NEW_IMAGE_URL
+                        ).permitAll()//
+//                .antMatchers(SecurityConstants.ACCESS_DENIED).permitAll()//
+//                .antMatchers(SecurityConstants.FORGET_PWD_LOGOUT_URL).permitAll()//
                 // .antMatchers("/h2-console/**/**").permitAll()
                 // Disallow everything else..
                 .anyRequest().authenticated();

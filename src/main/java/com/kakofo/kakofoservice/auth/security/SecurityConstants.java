@@ -4,6 +4,7 @@ public class SecurityConstants {
     public static final String AUTH_LOGIN_URL = "/auth/login";
     public static final String AUTH_LOGOUT_URL = "/auth/logout";
     public static final String FORGET_PWD_LOGOUT_URL = "/auth/forget_pwd";
+    public static final String DOWNLOAD_NEW_IMAGE_URL = "/news/download/**";
     public static final String ACCESS_DENIED = "/acces-denied";
 
     // Signing key for HS512 algorithm

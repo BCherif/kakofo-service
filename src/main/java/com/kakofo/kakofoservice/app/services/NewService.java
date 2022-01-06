@@ -48,15 +48,22 @@ public class NewService {
     public CResponse<News> update(News news, MultipartFile photo) {
         try {
             Optional<News> newsOptional = newRepository.findById(news.getId());
-            if (photo == null) {
-                if (newsOptional.isPresent()) {
-                    News newsUpdated = newRepository.save(news);
-                    return CResponse.success(newsUpdated, "Actualité enregistré");
-                }
-                return CResponse.error("Cette actualité n'existe pas !");
-            }
             if (newsOptional.isPresent()) {
                 news.setPath(uploadImageService.updateImage(photo, Constants.NEWS_DOWNLOAD_LINK, newsOptional.get().getPath()));
+                News newsUpdated = newRepository.save(news);
+                return CResponse.success(newsUpdated, "Actualité enregistré");
+            }
+            return CResponse.error("Cette actualité n'existe pas !");
+
+        } catch (Exception e) {
+            return CResponse.error("Une erreur est survenue!");
+        }
+    }
+
+    public CResponse<News> simpleUpdate(News news) {
+        try {
+            Optional<News> newsOptional = newRepository.findById(news.getId());
+            if (newsOptional.isPresent()) {
                 News newsUpdated = newRepository.save(news);
                 return CResponse.success(newsUpdated, "Actualité enregistré");
             }
